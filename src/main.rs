@@ -1,9 +1,9 @@
-use std::fmt::format;
+
 use std::sync::mpsc;
-use std::sync::mpsc::{Receiver, RecvTimeoutError, Sender};
+use std::sync::mpsc::{Sender};
 use std::thread;
 use std::time::Duration;
-use log::warn;
+
 
 
 fn main() {
@@ -22,7 +22,7 @@ fn main() {
         let worker = Worker::create_worker(task.id,tx.clone()); //adding task id for now
         worker.process_task(task)
     }
-    drop(tx); //ensuring theres no senders
+    drop(tx); //ensuring there's no senders
 
     //Print all processed tasks by workers
 
@@ -36,23 +36,6 @@ fn main() {
         }
     }
 
-    // while let Ok(received) rx.recv_timeout(Duration::from_secs(1)){
-    //     println!("Received Output from Worker -> {}", received)
-    // }
-
-    // rx.recv_timeout(Duration::from_secs(1)
-    // let mut iter = rx.recv_timeout();
-    //
-    // loop {
-    //     match iter.next() {
-    //         Some(value) => {
-    //             println!("Received Output from Worker -> {}", value);
-    //         }
-    //         None => {
-    //             println!("No more values");
-    //             break;
-    //         }
-    //     }
 
 }
 
